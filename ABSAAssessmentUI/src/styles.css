@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+/* body {
+  background-image: linear-gradient(
+    to top,
+    #e3eeff 0%,
+    #e3eeff 99%,
+    #e3eeff 100%
+  );
+} */
+.btn-outline-success {
+  background-color: #fff;
+}
+.form-group {
+  width: 30%;
+}

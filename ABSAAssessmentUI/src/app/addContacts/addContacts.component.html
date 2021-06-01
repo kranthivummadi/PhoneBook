@@ -1,0 +1,54 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Add Contact</li>
+    </ol>
+</nav>
+
+<form novalidate [formGroup]="addContactsForm" (ngSubmit)="onUnitsSubmit()">
+
+    <div class="form-group">
+        <label for="name">
+            Name :
+        </label>
+        <input type="text" class="form-control" formControlName="name" />
+        <span
+            *ngIf="addContactsForm.controls['name'].invalid && (addContactsForm.controls['name'].dirty || addContactsForm.controls['name'].touched)"
+            style="color: #a94442;">
+            <span *ngIf="addContactsForm.controls['name'].errors.required">
+                Name is required.
+            </span>
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="contactNumber">
+            Contact Number :
+        </label>
+        <input type="number" class="form-control" formControlName="contactNumber" />
+        <span
+            *ngIf="addContactsForm.controls['contactNumber'].invalid && (addContactsForm.controls['contactNumber'].dirty || addContactsForm.controls['contactNumber'].touched)"
+            style="color: #a94442;">
+            <span *ngIf="addContactsForm.controls['contactNumber'].errors.required">
+                Contact Number is required.
+            </span>
+        </span>
+    </div>
+
+    <div class="row" style="margin-top:45px;">
+        <div class="col-md-1">
+            <input class="btn btn-outline-primary" [disabled]="addContactsForm.pristine || addContactsForm.invalid"
+                type="submit" value="SUBMIT" />
+        </div>
+        <div class="col-md-1">
+            <input class="btn btn-default btn-outline-secondary" type="button" value="CANCEL" (click)="resetForm()" />
+        </div>
+    </div>
+
+</form>
+
+<div *ngIf="sucessResponse" class="alert alert-success" role="alert">
+    Phone Number {{addContactsForm.controls['contactNumber'].value}} Added sucessfully to Phone Book...
+</div>
+
+<div *ngIf="errorResponse" class="alert alert-danger" role="alert">
+    Problem in saving Phone Number {{addContactsForm.controls['contactNumber'].value}}
+</div>
